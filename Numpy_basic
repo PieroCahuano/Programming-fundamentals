@@ -1,0 +1,42 @@
+#Crear un algoritmo para llenar un arreglo de enteros solicitando filas y columnas al usuario,
+#este arreglo se debe inicializar con valores iguales a cero y asignar el valor de uno en las esquinas.
+
+import numpy as np
+
+filas=int(input("Ingrese el número de filas: "))
+columnas=int(input("Ingrese el número de columnas: "))
+arreglo_ceros=np.zeros((filas,columnas),dtype=int)
+
+tot_colum=arreglo_ceros.shape[0]
+tot_fil=arreglo_ceros.shape[1]
+
+print("Solución 1--------------------------------------------------------------------------")
+
+arreglo_ceros[0,0]=1
+
+arreglo_ceros[0,-1]=1
+
+arreglo_ceros[-1,0]=1
+
+arreglo_ceros[-1,-1]=1
+
+print(arreglo_ceros)
+
+print("Solución 2-Solución Alternativa---------------------------------------------------------------------------")
+for x in range(arreglo_ceros.shape[0]):
+    for y in range(arreglo_ceros.shape[1]):
+        if x==0 and y==0:#esq_sup_izquierda
+            arreglo_ceros[x,y]=1
+        elif x==0 and y==tot_colum-1: #esq_sup_derecha
+            arreglo_ceros[x, y]=1
+        elif x==tot_fil-1 and y==0:#esq_inf_izquierda
+            arreglo_ceros[x, y]=1
+        elif x==tot_fil-1 and y==tot_colum-1: #esq_inf_derecha
+            arreglo_ceros[x, y]=1
+print(arreglo_ceros)
+
+
+
+#Author: Piero Cahuano
+#Cel:+59367481200 -Whatssap
+#email:pcahuano@espol.edu.ec
