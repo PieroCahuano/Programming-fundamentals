@@ -1,0 +1,20 @@
+#Utilizando los siguientes valores Kilos de carne es $6 y kilos de vegetales es $4. Mostrar el costo de mantener cada animal durante 7 días en cada Zoo de la sierra. 
+
+
+
+matrizZoologicos=[[]]
+inicioSierra=len(zoologicosCosta)
+finSierra=inicioSierra+len(zoologicosSierra)
+matrizTrabajo=matrizZoologicos[inicioSierra:finSierra,:]
+carnes=6 
+vegetales=4
+matrizCarnes=ComidaAnimal[]
+for i in comidaAnimal.shape[1]:
+   columnaAnimal=comidaAnimal[:,i]
+   totalCarnes=carnes*sum(columnaAnimal[:3].tolist())
+   costoTotal=7*(totalCarnes+totalVegetales)#de un animal 
+   vectorZoologicoCosto=costoTotal*matrizTrabajo[:,i][1,2,3,4]
+   for j in vectorZoologicoCosto.shape[0]:
+       sumaAnimales[j][i]=vectorZoologicoCosto[j]
+       
+       
