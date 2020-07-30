@@ -1,0 +1,132 @@
+import numpy as np
+animales_felinos = ['leon', 'tigre', 'jaguar', 'puma']
+animales_simios = ['gorila', 'oranguntan', 'chimpace', 'macaco']
+
+zoológicos_costa = ['Zoo Pantanal', 'Zoo Naranjal', 'Zoo Manta']
+zoológicos_sierra = ['Zoo Quito', 'Zoo Ibarra', 'Zoo Loja']
+zoológicos_oriente = ['Zoo Tena', 'Zoo Yantzaza', 'Zoo Puyo']
+
+tipo_comida = ['carne de res', 'carne de pollo', 'carne de cerdo', 'lechuga', 'zanahorias', 'brocoli']
+precio_kg_comida = 3.0
+
+# filas son los zoologicos, columnas los animales, agrupados por tipo (en este caso, primero felinos, luego simios)
+datos_zoo = np.array([[1, 2, 4, 1, 10, 2, 3, 20],
+                      [2, 0, 2, 1, 29, 3, 4, 10],
+                      [1, 0, 1, 1, 29, 2, 2, 5],
+                      [4, 1, 2, 1, 4, 1, 5, 12],
+                      [2, 3, 3, 0, 3, 1, 3, 10],
+                      [4, 0, 0, 1, 2, 2, 2, 12],
+                      [6, 0, 6, 0, 12, 4, 1, 5],
+                      [1, 2, 2, 0, 16, 2, 4, 7],
+                      [3, 1, 6, 1, 8, 3, 2, 8]])
+
+# comida por día
+alimentos = np.array([[7, 2, 4, 2, 1, 0.5, 3, 0.25],
+                      [2, 5, 2, 4, 1, 0.5, 4, 0],
+                      [1, 10, 8, 1, 1, 0.5, 2, 0],
+                      [0, 0, 0, 0, 12, 1, 5, 2],
+                      [0, 0, 0, 0, 1.5, 1, 3, 1],
+                      [0, 0, 0, 0, 2.5, 10, 2, 1]])
+
+
+
+
+#literal a
+print("Literal a:")
+total_animales=datos_zoo.sum()
+print("Total de animales:",total_animales)
+
+print()
+print()
+#literal b
+print("Literal b:")
+comida_animales=alimentos.sum(axis=0)
+print(comida_animales)
+print(comida_animales.shape)
+comida_animales_felinos=comida_animales[0:len(animales_felinos)].sum()
+comida_animales_simios=comida_animales[len(animales_felinos):].sum()
+print("Total de comida felinos:",comida_animales_felinos)
+print("Total de comida simios:",comida_animales_simios)
+
+
+
+
+
+
+
+print()
+print()
+
+#literal c
+print("Literal c: ")
+total_x_zoo=datos_zoo.sum(axis=1)
+print(total_x_zoo)
+indice_maximo=total_x_zoo.argmax()
+print(indice_maximo)
+
+zoos=zoológicos_costa+zoológicos_sierra+zoológicos_oriente
+print("El zoologico con mayor numero de animales es:",zoos[indice_maximo],"y tiene",total_x_zoo.max())
+
+print()
+print()
+
+#Literal d
+print("Literal d:")
+cantidad_animales=datos_zoo.sum(axis=0)
+indice_minimo=cantidad_animales.argmin()
+animales=animales_felinos+animales_simios
+
+print("El animal con menor presencia en los zoologicos es",animales[indice_minimo],"y tiene",cantidad_animales[indice_minimo])
+
+print()
+print()
+
+#Literal e
+print("Literal e:")
+print("El presupuesto diario de comida: ")
+animales_cs=datos_zoo[:len(zoológicos_costa)+len(zoológicos_sierra),:]
+total_animales_cs=animales_cs.sum(axis=0)
+print(total_animales_cs)
+print(total_animales_cs.shape)
+
+total_alimentos_cs=alimentos.sum(axis=0)
+print(total_alimentos_cs)
+print(total_alimentos_cs.shape)
+
+presupuesto=total_alimentos_cs*total_animales_cs*precio_kg_comida
+print(presupuesto)
+print("El presupuesto para los zoos de costa y sierra es:",presupuesto.sum())
+
+
+print()
+print()
+#Literal f
+print("Literal f:")
+simios_sierra=datos_zoo[len(zoológicos_costa):len(zoológicos_costa)+len(zoológicos_sierra),len(animales_felinos):]
+
+print(simios_sierra)
+
+suma_simios=simios_sierra.sum(axis=0)
+print(suma_simios)
+
+indice_gorila=animales_simios.index("gorila")
+num_gorila=suma_simios[indice_gorila]
+
+porcentaje_gorilas=(num_gorila*100)/suma_simios.sum()
+print("El porcentaje de gorilas es:",round(porcentaje_gorilas,2))
+
+
+print()
+print()
+
+#Literal h
+print("Literal h")
+nueva_matriz=np.where(datos_zoo<5,datos_zoo+1,datos_zoo-2)
+print("El nuevo total de animales es:",nueva_matriz.sum())
+
+
+print()
+print()
+
+print("Literal i")
+
